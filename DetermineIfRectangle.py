@@ -19,7 +19,7 @@ def is_rectangle(A, B, C, D):
     reflection.cz(1, 0)
     reflection.h(range(2))
     #combines diffuser and oracle in order to complete quantum circuit
-    circ = QuantumCircuit(3,1)
+    circ = QuantumCircuit(3, 1)
     circ.h(range(2))
     circ.append(rectangle_oracle,range(2))
     circ.append(reflection, range(2))
@@ -30,5 +30,5 @@ def is_rectangle(A, B, C, D):
     circ.x(2)
     circ.measure(2,0)
     counts = execute(circ, backend, shots = 1).result().get_counts()
-    result = {i for i in counts if counts[i]==1}
+    result = {i for i in counts if counts[i] == 1}
     return(int(list(result)[0]))
